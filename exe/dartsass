@@ -1,0 +1,23 @@
+#! /usr/bin/env ruby
+# because rubygems shims assume a gem's executables are Ruby
+
+require "shellwords"
+
+platform_info = Gem::Platform.local
+platform_string = "#{platform_info.cpu}-#{platform_info.os}"
+
+exe_path =
+  case platform_string
+  when /darwin\z/  then File.join(__dir__, "darwin/sass")
+  when /linux\z/   then File.join(__dir__, "linux/sass")
+  when /mingw32\z/ then File.join(__dir__, "mingw32/sass.bat")
+  else
+    STDERR.puts(<<~ERRMSG)
+      ERROR: dartsass-ruby does not support the #{platform_string} platform
+    ERRMSG
+    exit 1
+  end
+
+command = Shellwords.join([ exe_path, ARGV ].flatten)
+puts "+ #{command}"
+exec(command)
