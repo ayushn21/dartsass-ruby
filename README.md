@@ -1,6 +1,6 @@
 # Dart Sass Ruby
 
-This gem is a thin wrapper around the [Dart Sass binaries](https://github.com/sass/dart-sass/releases). It enables you to easily compile Sass in Ruby projects.
+This gem is a thin wrapper around the [Dart Sass binaries](https://github.com/sass/dart-sass/releases). It enables you to easily compile Sass in Ruby projects. The binaries for macOS, Linux and Windows are included.
 
 The version number of this gem tracks the version number of the Dart Sass binary.
 
